@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            padding: 15px;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        header a:hover {
+            color: #f4a261;
+        }
+        #portfolio {
+            padding: 40px 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .portfolio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .portfolio-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+        .portfolio-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .portfolio-item p {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html">Domů</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="volnyCas.html">Volný čas</a>
+        <a href="kontakty.html">Kontakty</a>
+    </header>
+    
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h1>Portfolio</h1>
+        <div class="portfolio-gallery">
+            <div class="portfolio-item">
+                <img src="Obrázky/Diplom-Oliver SobÄÃ¡k_page-0001.jpg" alt="Project 1">
+                <p>Project 1 Description</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="Obrázky/Diplom-Oliver Sobčák_page-0001.jpg" alt="Project 2">
+                <p>Project 2 Description</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="Obrázky/Diplom-Oliver Sobčák-1_page-0001.jpg" alt="Project 3">
+                <p>Project 3 Description</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="Obrázky/Diplom-Oliver Sobčák-2_page-0001.jpg" alt="Project 4">
+                <p>Project 4 Description</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="Obrázky/Diplom-Oliver Sobčák-3_page-0001.jpg" alt="Project 5">
+                <p>Project 5 Description</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="Obrázky/Diplom-Oliver Sobčák-4_page-0001.jpg" alt="Project 6">
+                <p>Project 6 Description</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="Obrázky/osvedceni_hcw_Oliver Sobčák.jpg" alt="Project 7">
+                <p>Project 7 Description</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="Obrázky/Scan 9. 2. 2025 at 18.50_page-0001.jpg" alt="Project 8">
+                <p>Project 8 Description</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
