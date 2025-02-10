@@ -1,220 +1,249 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Oliver Sobčák</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* General Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body {
-            overflow-x: hidden;
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            text-align: center;
-            width: 100vw;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Oliver Sobčák</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* General Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      overflow-x: hidden;
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      text-align: center;
+      width: 100vw;
+    }
 
-        /* Header Navigation */
-        header {
-            background-color: #222;
-            padding: 15px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100vw;
-        }
-        header a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: color 0.3s ease-in-out;
-        }
-        header a:hover { color: #f4a261; }
+    /* Header Navigation */
+    header {
+      background-color: #222;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100vw;
+    }
+    header a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+    }
+    header a:hover { color: #f4a261; }
 
-        /* Portfolio Section */
-        #portfolio {
-            padding: 50px 20px;
-            max-width: 1400px;
-            margin: auto;
-            width: 100%;
-        }
-        h1 {
-            font-size: 42px;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
-        .portfolio-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            padding: 15px;
-            max-width: 1400px;
-            margin: auto;
-        }
+    /* Portfolio Section */
+    #portfolio {
+      padding: 50px 20px;
+      max-width: 1400px;
+      margin: auto;
+      width: 100%;
+    }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 25px;
+      font-weight: bold;
+    }
+    .portfolio-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 15px;
+      max-width: 1400px;
+      margin: auto;
+    }
 
-        /* Portfolio Items */
-        .portfolio-item {
-            background: white;
-            padding: 12px;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-        }
-        .portfolio-item:hover { transform: translateY(-5px); }
-        .portfolio-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            object-fit: cover;
-        }
+    /* Portfolio Items */
+    .portfolio-item {
+      background: white;
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    .portfolio-item:hover { transform: translateY(-5px); }
+    .portfolio-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
 
-        /* Lightbox Modal */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .lightbox-content {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-        }
-        .lightbox img {
-            max-width: 80vw;
-            max-height: 80vh;
-            border-radius: 10px;
-        }
-        .lightbox-description {
-            color: white;
-            font-size: 18px;
-            margin-top: 10px;
-        }
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    /* Using grid to separate the image box from the clickable overlays */
+    .lightbox-content {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    .lightbox-container {
+      position: relative;
+      z-index: 2;
+    }
+    .lightbox-container img {
+      max-width: 80vw;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+    .lightbox-description {
+      color: white;
+      font-size: 18px;
+      margin-top: 10px;
+    }
 
-        /* Navigation Arrows */
-        .lightbox-prev, .lightbox-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 50px;
-            color: white;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 15px;
-            border-radius: 50%;
-            z-index: 1001;
-            transition: background 0.3s;
-        }
-        .lightbox-prev { left: 20px; }
-        .lightbox-next { right: 20px; }
-        .lightbox-prev:hover, .lightbox-next:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
+    /* Navigation Overlay Areas (placed outside the image box) */
+    .overlay-area {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    .overlay-area:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+    /* Rounded inner edges for visual appeal */
+    .overlay-area.left {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+    .overlay-area.right {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
 
-        /* Close Button */
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 40px;
-            color: white;
-            cursor: pointer;
-            z-index: 1002;
-        }
-        .lightbox-close:hover { color: #f4a261; }
+    /* Close Button */
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      z-index: 1004;
+    }
+    .lightbox-close:hover { color: #f4a261; }
 
-        /* Footer */
-        footer {
-            background: #222;
-            color: white;
-            padding: 15px;
-            margin-top: 40px;
-            width: 100vw;
-        }
-    </style>
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      padding: 15px;
+      margin-top: 40px;
+      width: 100vw;
+    }
+  </style>
 </head>
 <body>
-
-    <!-- Header Navigation -->
-    <header>
-        <a href="index.html">Domů</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="volnyCas.html">Volný čas</a>
-        <a href="kontakty.html">Kontakty</a>
-    </header>
+  <!-- Header Navigation -->
+  <header>
+    <a href="index.html">Domů</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="volnyCas.html">Volný čas</a>
+    <a href="kontakty.html">Kontakty</a>
+  </header>
     
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h1>Moje Portfolio</h1>
-        <div class="portfolio-gallery"></div>
-    </section>
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h1>Moje Portfolio</h1>
+    <div class="portfolio-gallery"></div>
+  </section>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <div class="lightbox-content">
-            <span class="lightbox-prev" onclick="prevImage()">&#10094;</span>
-            <img id="lightbox-img">
-            <span class="lightbox-next" onclick="nextImage()">&#10095;</span>
-        </div>
-        <p id="lightbox-description" class="lightbox-description"></p>
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-content">
+      <div class="overlay-area left" onclick="prevImage()"></div>
+      <div class="lightbox-container">
+        <img id="lightbox-img">
+      </div>
+      <div class="overlay-area right" onclick="nextImage()"></div>
     </div>
+    <p id="lightbox-description" class="lightbox-description"></p>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
-    </footer>
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
+  </footer>
 
-    <script>
-        const images = [
-            { src: "Obrázky/Diplom-Oliver Sobčák_page-0001.jpg", desc: "Diplom 1" },
-            { src: "Obrázky/Diplom-Oliver Sobčák-1_page-0001.jpg", desc: "Diplom 2" },
-            { src: "Obrázky/Diplom-Oliver Sobčák-2_page-0001.jpg", desc: "Diplom 3" },
-            { src: "Obrázky/Diplom-Oliver Sobčák-3_page-0001.jpg", desc: "Diplom 4" },
-            { src: "Obrázky/Diplom-Oliver Sobčák-4_page-0001.jpg", desc: "Diplom 5" },
-            { src: "Obrázky/osvedceni_hcw_Oliver Sobčák.jpg", desc: "Osvedceni HCW" },
-            { src: "Obrázky/Scan 9. 2. 2025 at 18.50_page-0001.jpg", desc: "Scan 9. 2. 2025" },
-            { src: "Obrázky/Diplom- - 2025-02-07T144337.793_page-0001.jpg", desc: "Diplom 6" },
-            { src: "Obrázky/Diplom- - 2025-02-07T144403.170_page-0001.jpg", desc: "Diplom 7" }
-        ];
+  <script>
+    const images = [
+      { src: "Obrázky/Diplom-Oliver Sobčák_page-0001.jpg", desc: "Diplom 1" },
+      { src: "Obrázky/Diplom-Oliver Sobčák-1_page-0001.jpg", desc: "Diplom 2" },
+      { src: "Obrázky/Diplom-Oliver Sobčák-2_page-0001.jpg", desc: "Diplom 3" },
+      { src: "Obrázky/Diplom-Oliver Sobčák-3_page-0001.jpg", desc: "Diplom 4" },
+      { src: "Obrázky/Diplom-Oliver Sobčák-4_page-0001.jpg", desc: "Diplom 5" },
+      { src: "Obrázky/osvedceni_hcw_Oliver Sobčák.jpg", desc: "Osvedceni HCW" },
+      { src: "Obrázky/Scan 9. 2. 2025 at 18.50_page-0001.jpg", desc: "Scan 9. 2. 2025" },
+      { src: "Obrázky/Diplom- - 2025-02-07T144337.793_page-0001.jpg", desc: "Diplom 6" },
+      { src: "Obrázky/Diplom- - 2025-02-07T144403.170_page-0001.jpg", desc: "Diplom 7" },
+      { src: "Obrázky/hack14-hack14_63290_page-0001.jpg", desc: "Diplom 8" },
+      { src: "Obrázky/hack14-hack14_63290_page-0002.jpg", desc: "Diplom 9" },
+    ];
 
-        let currentIndex = 0;
-        const gallery = document.querySelector('.portfolio-gallery');
+    let currentIndex = 0;
+    const gallery = document.querySelector('.portfolio-gallery');
 
-        images.forEach((item, index) => {
-            let div = document.createElement('div');
-            div.className = 'portfolio-item';
-            div.innerHTML = `<img src="${item.src}" alt="Project ${index + 1}" onclick="openLightbox(${index})">
-                            <p>${item.desc}</p>`;
-            gallery.appendChild(div);
-        });
+    images.forEach((item, index) => {
+      let div = document.createElement('div');
+      div.className = 'portfolio-item';
+      div.innerHTML = `<img src="${item.src}" alt="Project ${index + 1}" onclick="openLightbox(${index})">
+                       <p>${item.desc}</p>`;
+      gallery.appendChild(div);
+    });
 
-        function openLightbox(index) {
-            currentIndex = index;
-            document.getElementById('lightbox-img').src = images[currentIndex].src;
-            document.getElementById('lightbox-description').innerText = images[currentIndex].desc;
-            document.getElementById('lightbox').style.display = 'flex';
+    function openLightbox(index) {
+      currentIndex = index;
+      document.getElementById('lightbox-img').src = images[currentIndex].src;
+      document.getElementById('lightbox-description').innerText = images[currentIndex].desc;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    function prevImage() {
+      openLightbox((currentIndex - 1 + images.length) % images.length);
+    }
+
+    function nextImage() {
+      openLightbox((currentIndex + 1) % images.length);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(event) {
+      const lightboxDisplay = document.getElementById('lightbox').style.display;
+      if (lightboxDisplay === 'flex') {
+        if (event.key === 'Escape') {
+          closeLightbox();
+        } else if (event.key === 'ArrowLeft') {
+          prevImage();
+        } else if (event.key === 'ArrowRight') {
+          nextImage();
         }
-
-        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
-        function prevImage() { openLightbox((currentIndex - 1 + images.length) % images.length); }
-        function nextImage() { openLightbox((currentIndex + 1) % images.length); }
-    </script>
-
+      }
+    });
+  </script>
 </body>
 </html>
