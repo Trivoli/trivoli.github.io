@@ -207,10 +207,12 @@
     images.forEach((item, index) => {
       let div = document.createElement('div');
       div.className = 'portfolio-item';
-      div.innerHTML = `<img src="${item.src}" alt="Project ${index + 1}" onclick="openLightbox(${index})">
-                       <p>${item.desc}</p>`;
+      div.innerHTML = `<img src="${item.src}" alt="Project ${index + 1}">\n<p>${item.desc}</p>`;
+      div.onclick = () => openLightbox(index); // Make the entire box clickable
       gallery.appendChild(div);
-    });
+});
+
+
 
     function openLightbox(index) {
       currentIndex = index;
