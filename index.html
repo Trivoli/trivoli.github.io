@@ -3,19 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Domů | Oliver Sobčák</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="Obrázky/ikona.png">
+    <style>
+        /* General Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            width: 100vw;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: #222;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        header a:hover { color: #f4a261; }
+
+        /* Main Content */
+        .content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .text-section h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .text-section p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+            color: #333;
+        }
+
+        /* Center Box */
+        .center-box {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .large-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .articles {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .article {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease-in-out;
+            width: 300px;
+        }
+        .article:hover { transform: translateY(-5px); }
+        .article img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .article h2 {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            padding: 15px;
+            margin-top: 40px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
+
+    <!-- Header Navigation -->
     <header>
         <a href="index.html">Domů</a>
         <a href="portfolio.html">Portfolio</a>
         <a href="volnyCas.html">Volný čas</a>
         <a href="kontakty.html">Kontakty</a>
     </header>
-
+    
     <!-- Main Content -->
     <main class="content">
         <!-- Text Section -->
@@ -60,7 +163,8 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Oliver | Všechna práva vyhrazena.</p>
+        &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
     </footer>
+
 </body>
 </html>
