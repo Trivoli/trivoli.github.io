@@ -1,22 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dokument | Oliver Sobčák</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Obrázky/ikona.png">
+    <style>
+        /* General Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: #222;
+            padding: 15px;
+            width: 100%;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        header a:hover { color: #f4a261; }
+
+        /* Main Content */
+        .content {
+            flex-grow: 1;
+            max-width: 90%;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            margin: auto;
+            max-width: 800px;
+        }
+        .content-box h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .content-box p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
-        <!-- Header -->
-        <header>
-            <a href="index.html">Domů</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="volnyCas.html">Volný čas</a>
-            <a href="kontakty.html">Kontakty</a>
-        </header>
 
-        <footer>
-            &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
-        </footer>
+    <!-- Header -->
+    <header>
+        <a href="index.html">Domů</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="volnyCas.html">Volný čas</a>
+        <a href="kontakty.html">Kontakty</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <section class="content-box">
+            <h1>Obsah stránky</h1>
+            <p>Toto je místo pro váš obsah. Můžete zde přidat cokoliv potřebujete.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
+    </footer>
+
 </body>
 </html>

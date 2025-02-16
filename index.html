@@ -70,6 +70,7 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
+        /* Articles Section */
         .articles {
             display: flex;
             justify-content: center;
@@ -78,25 +79,43 @@
             margin-top: 20px;
         }
 
-        .article {
+        .article, .pdf-section {
             background: white;
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease-in-out;
             width: 300px;
+            text-align: center;
         }
-        .article:hover { transform: translateY(-5px); }
+        .article:hover, .pdf-section:hover { transform: translateY(-5px); }
         .article img {
             width: 100%;
             height: auto;
             border-radius: 10px;
             object-fit: cover;
         }
-        .article h2 {
+        .article h2, .pdf-section h2 {
             font-size: 20px;
             margin-top: 10px;
             color: #333;
+        }
+
+        /* PDF Download Section */
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+            margin-top: 10px;
+        }
+        .download-btn:hover {
+            background-color: #0056b3;
         }
 
         /* Footer */
@@ -150,13 +169,12 @@
                     </a>
                 </article>
 
-                <!-- Article 2 -->
-                <article class="article">
-                    <a href="article2.html">
-                        <img src="article2.jpg" alt="Popis článku 2">
-                        <h2>Článek 2</h2>
-                    </a>
-                </article>
+                <!-- PDF Download Section -->
+                <div class="pdf-section">
+                    <h2>📄 Stažení dokumentu</h2>
+                    <p>Kliknutím níže otevřete dokument v novém okně.</p>
+                    <a href="docs/Silent House.pdf" target="_blank" class="download-btn">Otevřít PDF</a>
+                </div>
             </div>
         </section>
     </main>
