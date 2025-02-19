@@ -1,99 +1,185 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokument | Oliver Sobčák</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Obrázky/ikona.png">
-    <style>
-        /* General Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobby List | Oliver Sobčák</title>
+  <style>
+    /* CSS Variables for Theme Management */
+    :root {
+      --primary-bg: #f8f9fa;
+      --primary-color: #222;
+      --accent-color: #f4a261;
+      --text-color: #555;
+      --white: #fff;
+    }
 
-        /* Header */
-        header {
-            background-color: #222;
-            padding: 15px;
-            width: 100%;
-        }
-        header a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: color 0.3s ease-in-out;
-        }
-        header a:hover { color: #f4a261; }
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      background-color: var(--primary-bg);
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
 
-        /* Main Content */
-        .content {
-            flex-grow: 1;
-            max-width: 90%;
-            margin: 50px auto;
-            padding: 20px;
-        }
+    /* Header Navigation */
+    header {
+      background-color: var(--primary-color);
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+    }
 
-        .content-box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            margin: auto;
-            max-width: 800px;
-        }
-        .content-box h1 {
-            font-size: 36px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        .content-box p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #333;
-        }
+    /* Section Styles */
+    .portfolio-section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .portfolio-section h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+    .portfolio-section p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+    .divider-line {
+      width: 80%;
+      height: 2px;
+      background-color: var(--accent-color);
+      margin: 0 auto 30px;
+    }
 
-        /* Footer */
-        footer {
-            background: #222;
-            color: white;
-            padding: 15px;
-            width: 100%;
-            margin-top: auto;
-        }
-    </style>
+    /* Hobby Grid Layout */
+    .portfolio-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .portfolio-item {
+      background-color: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+    }
+    .portfolio-item h3 {
+      font-size: 20px;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    .portfolio-item p {
+      font-size: 16px;
+      color: var(--text-color);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 15px;
+      margin-top: 40px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
+  <!-- Header Navigation -->
+  <header>
+    <nav>
+      <a href="index.html">Domů</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="volnyCas.html">Volný čas</a>
+      <a href="kontakty.html">Kontakty</a>
+    </nav>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <a href="index.html">Domů</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="volnyCas.html">Volný čas</a>
-        <a href="kontakty.html">Kontakty</a>
-    </header>
+  <!-- Hobby Section -->
+  <section id="hobbies" class="portfolio-section">
+    <h2>Moje zájmy</h2>
+    <p>Čím se rád zabývám ve svém volném čase</p>
+    <div class="divider-line"></div>
+    <div class="portfolio-gallery">
+      <div class="portfolio-item">
+        <h3>Pájení</h3>
+        <p>Zkoumání technik a vytváření malých projektů.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Můj pes Agard</h3>
+        <p>Péče a trénink mého věrného společníka.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Vytváření her</h3>
+        <p>Vývoj interaktivních a zábavných her.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Počítače/IT</h3>
+        <p>Experimentování s technologií a programováním.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Vědecká videa a rozbory</h3>
+        <p>Sledování a analýza zajímavých vědeckých témat.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Vzdělávání se</h3>
+        <p>Samostudium a rozšiřování obzorů.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Novinky ze světa vědy a techniky</h3>
+        <p>Aktuality a novinky, které mě inspirují.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Kvantové počítače</h3>
+        <p>Studium kvantové technologie a fyziky.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Angličtina</h3>
+        <p>Zlepšování jazykových dovedností a komunikace.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Seberozvoj</h3>
+        <p>Osobní růst a neustálé zlepšování sebe sama.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Filozofické úvahy</h3>
+        <p>Zamýšlení se nad tématy, která inspirují hluboké myšlení.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Pomáhání lidem</h3>
+        <p>Podpora a pomoc ostatním v každodenních situacích.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Main Content -->
-    <main class="content">
-        <section class="content-box">
-            <h1>Obsah stránky</h1>
-            <p>Toto je místo pro váš obsah. Můžete zde přidat cokoliv potřebujete.</p>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
-    </footer>
-
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
+  </footer>
 </body>
 </html>

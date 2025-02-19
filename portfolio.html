@@ -41,7 +41,7 @@
       color: #f4a261;
     }
     
-    /* Divider Section Style (for Diplomy, Hackathony, Školy) */
+    /* Portfolio Sections */
     .portfolio-section {
       padding: 50px 20px;
       max-width: 1400px;
@@ -92,8 +92,88 @@
       border-radius: 10px;
       object-fit: cover;
     }
+    .portfolio-item a {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .portfolio-item a h2 {
+      font-size: 18px;
+      margin-top: 8px;
+      font-weight: normal;
+      color: #222;
+    }
+    .portfolio-item a:hover h2 {
+      color: #f4a261;
+    }
     
-    /* Lightbox Modal */
+    /* FFUK Section Styles */
+    .ffuk-list {
+      list-style: disc inside;
+      padding: 0;
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: left;
+    }
+    .ffuk-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .ffuk-item img {
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+    }
+    
+    /* Dedicated PDF Lightbox Modal */
+    .pdf-lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .pdf-lightbox-content {
+      width: 95vw;
+      height: 95vh;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .pdf-lightbox-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* PDF Controls fixed at top-right of viewport */
+    .pdf-controls {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1100;
+      display: flex;
+      gap: 10px;
+    }
+    .pdf-lightbox-close {
+      font-size: 30px;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .pdf-lightbox-close:hover {
+      color: #f4a261;
+    }
+    
+    /* Regular Lightbox Modal for Images */
     .lightbox {
       display: none;
       position: fixed;
@@ -254,10 +334,77 @@
         <img src="Obrázky/Techdays Certificate Oliver Sobčák.jpg" alt="Diploma">
         <p>Techdays na sspš</p>
       </div>
+      <div class="portfolio-item">
+        <img src="Obrázky/EuropeanMoneyQuiz.jpg" alt="Diploma">
+        <p>Potvrzení o účasti v národním kole finanční gramotnosti (1. místo ze školy a 83. v republice. Bylo v 8. třídě a 9. třída měla na průměr 150.-200. místo)</p>
+      </div>
     </div>
   </section>
     
-  <!-- Lightbox Modal -->
+  <!-- Vysvědčení Section with Dedicated PDF Lightbox -->
+  <section id="vysvedceni" class="portfolio-section">
+    <h2>Vysvědčení</h2>
+    <p>Máme slovní vysvědčení od školy, takže jsem z něho vybral 2 nejlepší hodnocení</p>
+    <div class="divider-line"></div>
+    <div class="portfolio-gallery">
+      <!-- This PDF item exclusively opens the dedicated PDF lightbox and is marked as nolightbox -->
+      <div class="portfolio-item nolightbox" onclick="openPdfLightbox('Obrázky/Vysvědčení - IX.pdf')">
+        <img src="Obrázky/Vysvedceni-thumbnail.jpg" alt="Vysvědčení IX">
+        <h2>Vysvědčení IX</h2>
+      </div>
+    </div>
+  </section>
+    
+  <!-- Mé skvosty Section with linked items (no lightbox) -->
+  <section id="Moje výtvory" class="portfolio-section">
+    <h2>Mé skvosty</h2>
+    <p>Věci co jsem sám vytvářel</p>
+    <div class="divider-line"></div>
+    <div class="portfolio-gallery">
+      <div class="portfolio-item nolightbox">
+        <a href="https://liten-ourschool.weebly.com/articles/the-beginnings-of-america" target="_blank" rel="noopener noreferrer">
+          <img src="Obrázky/Article-1.png" alt="Mapa Euro-Asie">
+          <h2>Beginnings of America</h2>
+        </a>
+      </div>
+      <div class="portfolio-item nolightbox">
+        <a href="docs/Silent House.pdf" target="_blank">
+          <img src="Obrázky/NaseSkola.webp" alt="Náhled PDF ročníkové práce">
+          <h2>Má ročníková práce</h2>
+        </a>
+      </div>
+    </div>
+  </section>
+    
+  <!-- New FFUK Section (Attended Lectures as a List with Dots) -->
+  <section id="ffuk" class="portfolio-section">
+    <h2>Absolvované přednášky na FFUK</h2>
+    <div class="divider-line"></div>
+    <div class="portfolio-gallery">
+      <div class="portfolio-item nolightbox" style="display: flex; align-items: flex-start; gap: 20px;">
+        <img src="Obrázky/Žetony.jpg" alt="FFUK přednášky" style="width: 420px; height: auto; border-radius: 10px;">
+        <ul class="ffuk-list">
+          <li>Sara Polak: Zníčí nás umělá inteligence?</li>
+          <li>Tomáš Petrásek: Všichni mimozemšťani jsou nejspíš mrtví!</li>
+          <li>Luboš Pick: Jak se vysmát matfyzákovi</li>
+          <li>Jan Konvalinka: Lesk a bída moderní techniky</li>
+          <li>Michal Pěchouček: Umělá inteligence a život zítřka</li>
+          <li>Martin Vraný a Ondřej Havlíček: Kritické myšlení - úvod do rozpoznávání keců</li>
+          <li>Petr Kulhánek: Věda každodenními jevy</li>
+          <li>Daniel Stach: Jak myslí velikáni</li>
+          <li>Petr Slavíček: Omyly ve vědě</li>
+          <li>Jan Cibulka: Co o nás ví internet?</li>
+          <li>Dušan Majer: SpaceX a dobývání Marsu</li>
+          <li>Miroslav Bárta: Vzestupy a pády civilizací</li>
+          <li>Josef Holý: Lapení v sociálních sítích</li>
+          <li>Jan Strojil: Soumrak antibiotik</li>
+          <li>Petr Pavel: Cesta z chaosu</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+    
+  <!-- Regular Lightbox Modal for Images -->
   <div id="lightbox" class="lightbox">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
     <div class="lightbox-content">
@@ -270,25 +417,35 @@
     <p id="lightbox-description" class="lightbox-description"></p>
   </div>
     
+  <!-- Dedicated PDF Lightbox Modal with Only the Close Button -->
+  <div id="pdf-lightbox" class="pdf-lightbox">
+    <div class="pdf-controls">
+      <button class="pdf-lightbox-close" onclick="closePdfLightbox()">&times;</button>
+    </div>
+    <div class="pdf-lightbox-content">
+      <iframe id="pdf-iframe" src=""></iframe>
+    </div>
+  </div>
+    
   <!-- Footer -->
   <footer>
     &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
   </footer>
     
   <script>
-    // Collect all portfolio items across all sections (in document order)
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    // Build an array of image data from the items
+    // Regular Lightbox Logic for Images
+    const portfolioItems = document.querySelectorAll('.portfolio-item:not(.nolightbox)');
     const images = Array.from(portfolioItems).map(item => {
       const img = item.querySelector('img');
       const p = item.querySelector('p');
-      return { src: img.src, desc: p.innerText };
+      return { src: img.src, desc: p ? p.innerText : '' };
     });
     
     let currentIndex = 0;
-    // Attach click listeners to each portfolio item
     portfolioItems.forEach((item, index) => {
-      item.addEventListener('click', () => openLightbox(index));
+      item.addEventListener('click', () => {
+        openLightbox(index);
+      });
     });
     
     function openLightbox(index) {
@@ -296,9 +453,13 @@
       document.getElementById('lightbox-img').src = images[currentIndex].src;
       document.getElementById('lightbox-description').innerText = images[currentIndex].desc;
       document.getElementById('lightbox').style.display = 'flex';
+      // Disable body scroll
+      document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
+      // Restore body scroll
+      document.body.style.overflow = 'auto';
     }
     function prevImage() {
       openLightbox((currentIndex - 1 + images.length) % images.length);
@@ -306,11 +467,37 @@
     function nextImage() {
       openLightbox((currentIndex + 1) % images.length);
     }
+    
+    // Dedicated PDF Lightbox Functions
+    function openPdfLightbox(pdfUrl) {
+      document.getElementById('pdf-iframe').src = pdfUrl;
+      document.getElementById('pdf-lightbox').style.display = 'flex';
+      // Disable body scroll when PDF modal is open
+      document.body.style.overflow = 'hidden';
+    }
+    function closePdfLightbox() {
+      document.getElementById('pdf-iframe').src = '';
+      document.getElementById('pdf-lightbox').style.display = 'none';
+      // Restore body scroll
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Global Escape key: Closes the open modal (PDF or regular lightbox)
     document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        if (document.getElementById('pdf-lightbox').style.display === 'flex') {
+          closePdfLightbox();
+        } else if (document.getElementById('lightbox').style.display === 'flex') {
+          closeLightbox();
+        }
+      }
+      // Add arrow key navigation for regular lightbox
       if (document.getElementById('lightbox').style.display === 'flex') {
-        if (event.key === 'Escape') closeLightbox();
-        else if (event.key === 'ArrowLeft') prevImage();
-        else if (event.key === 'ArrowRight') nextImage();
+        if (event.key === 'ArrowLeft') {
+          prevImage();
+        } else if (event.key === 'ArrowRight') {
+          nextImage();
+        }
       }
     });
   </script>
