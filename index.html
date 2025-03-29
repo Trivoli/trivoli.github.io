@@ -1,49 +1,111 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domů | Oliver Sobčák</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Obrázky/Logo.png">
-    <link rel="stylesheet" href="flexbox.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domů | Oliver Sobčák</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Obrázky/Logo.png">
+  <style>
+    /* Additional CSS for improved hero layout */
+    main.content {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    
+    /* Hero Section with responsive two-column layout */
+    .hero-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
+    }
+    
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .hero-text p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text, .hero-image {
+        min-width: auto;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header>
-        <a href="index.html">Domů</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="volnyCas.html">Volný čas</a>
-        <a href="kontakty.html">Kontakty</a>
-    </header>
-    
-    <!-- Main Content -->
-    <main class="content">
-        <!-- Text Section -->
-        <section class="text-section">
-            <h1>Web o mně a mé práci</h1>
-            <p>
-                Jmenuji se Oliver a mojí vášní je technologie. Cílem tohoto webu je představit mě a moji práci.
-                Nejvíce mě baví angličtina, fyzika, matematika, informatika a chemie. Chtěl bych se dostat na technologické 
-                či bilingvní gymnázium. Ne proto, že je to prestižnější typ školy ale protože věřím, že pokud tam půjdu, 
-                rozvinu své schopnosti, dovednosti, samostatnost a obzory.
-            </p>
-        </section>
+  <!-- Header Navigation -->
+  <header>
+    <nav>
+      <a href="index.html">Domů</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="volnyCas.html">Volný čas</a>
+      <a href="kontakty.html">Kontakty</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main class="content">
+    <section class="hero-section">
+      <div class="hero-text">
+        <h1>Web o mně a mé práci</h1>
+        <p>
+          Jmenuji se Oliver a mojí vášní je technologie. Cílem tohoto webu je představit mě a moji práci.
+          Nejvíce mě baví angličtina, fyzika, matematika, informatika a chemie. Chtěl bych se dostat na technologické 
+          či bilingvní gymnázium. Ne proto, že je to prestižnější typ školy, ale protože věřím, že pokud tam půjdu, 
+          rozvinu své schopnosti, dovednosti, samostatnost a obzory.
+        </p>
+      </div>
+      <div class="hero-image">
+        <img src="Obrázky/Ja.jpg" alt="Oliver">
+      </div>
+    </section>
+  </main>
 
-        <!-- Center Box Section -->
-        <section class="center-box">
-            <!-- Main Content Image -->
-            <figure>
-                <img src="Obrázky/Ja.jpg" alt="Oliver" class="small-image">
-            </figure>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
-    </footer>
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Oliver Sobčák | Všechna práva vyhrazena
+  </footer>
 
 </body>
 </html>
