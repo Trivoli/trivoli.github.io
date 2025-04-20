@@ -371,7 +371,7 @@
     flex-direction: column;
   }
   .lightbox-content {
-    display: grid;
+   
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     width: 100%;
