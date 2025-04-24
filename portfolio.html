@@ -223,72 +223,88 @@
   </footer>
     
   <script>
-    // Regular Lightbox Logic for Images
-    const portfolioItems = document.querySelectorAll('.portfolio-item:not(.nolightbox)');
-    const images = Array.from(portfolioItems).map(item => {
-      const img = item.querySelector('img');
-      const p = item.querySelector('p');
-      return { src: img.src, desc: p ? p.innerText : '' };
-    });
-    
-    let currentIndex = 0;
-    portfolioItems.forEach((item, index) => {
-      item.addEventListener('click', () => {
-        openLightbox(index);
+    // Ensure script runs after DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Regular Lightbox Logic for Images
+      const portfolioItems = document.querySelectorAll('.portfolio-item:not(.nolightbox)');
+      const images = Array.from(portfolioItems).map(item => {
+        const img = item.querySelector('img');
+        const p = item.querySelector('p');
+        return img ? { src: img.src, desc: p ? p.innerText : '' } : null;
+      }).filter(Boolean);
+
+      let currentIndex = 0;
+      portfolioItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          if (images[index]) {
+            openLightbox(index);
+          }
+        });
       });
-    });
-    
-    function openLightbox(index) {
-      currentIndex = index;
-      document.getElementById('lightbox-img').src = images[currentIndex].src;
-      document.getElementById('lightbox-description').innerText = images[currentIndex].desc;
-      document.getElementById('lightbox').style.display = 'flex';
-      // Disable body scroll
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
+
+      function openLightbox(index) {
+        if (!images[index]) return;
+        currentIndex = index;
+        document.getElementById('lightbox-img').src = images[currentIndex].src;
+        document.getElementById('lightbox-description').innerText = images[currentIndex].desc;
+        document.getElementById('lightbox').style.display = 'flex';
+        // Disable body scroll
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+        // Restore body scroll
+        document.body.style.overflow = 'auto';
+      }
+      function prevImage() {
+        openLightbox((currentIndex - 1 + images.length) % images.length);
+      }
+      function nextImage() {
+        openLightbox((currentIndex + 1) % images.length);
+      }
+
+      // Make lightbox functions globally accessible
+      window.openLightbox = openLightbox;
+      window.closeLightbox = closeLightbox;
+      window.prevImage = prevImage;
+      window.nextImage = nextImage;
+
+      // Dedicated PDF Lightbox Functions
+      window.openPdfLightbox = function(pdfUrl) {
+        document.getElementById('pdf-iframe').src = pdfUrl;
+        document.getElementById('pdf-lightbox').style.display = 'flex';
+        // Disable body scroll when PDF modal is open
+        document.body.style.overflow = 'hidden';
+      }
+      window.closePdfLightbox = function() {
+        document.getElementById('pdf-iframe').src = '';
+        document.getElementById('pdf-lightbox').style.display = 'none';
+        // Restore body scroll
+        document.body.style.overflow = 'auto';
+      }
+
+      // Global Escape key: Closes the open modal (PDF or regular lightbox)
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          if (document.getElementById('pdf-lightbox').style.display === 'flex') {
+            window.closePdfLightbox();
+          } else if (document.getElementById('lightbox').style.display === 'flex') {
+            closeLightbox();
+          }
+        }
+        // Add arrow key navigation for regular lightbox
+        if (document.getElementById('lightbox').style.display === 'flex') {
+          if (event.key === 'ArrowLeft') {
+            prevImage();
+          } else if (event.key === 'ArrowRight') {
+            nextImage();
+          }
+        }
+      });
+
+      // Defensive: always hide lightbox on page load
       document.getElementById('lightbox').style.display = 'none';
-      // Restore body scroll
-      document.body.style.overflow = 'auto';
-    }
-    function prevImage() {
-      openLightbox((currentIndex - 1 + images.length) % images.length);
-    }
-    function nextImage() {
-      openLightbox((currentIndex + 1) % images.length);
-    }
-    
-    // Dedicated PDF Lightbox Functions
-    function openPdfLightbox(pdfUrl) {
-      document.getElementById('pdf-iframe').src = pdfUrl;
-      document.getElementById('pdf-lightbox').style.display = 'flex';
-      // Disable body scroll when PDF modal is open
-      document.body.style.overflow = 'hidden';
-    }
-    function closePdfLightbox() {
-      document.getElementById('pdf-iframe').src = '';
       document.getElementById('pdf-lightbox').style.display = 'none';
-      // Restore body scroll
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Global Escape key: Closes the open modal (PDF or regular lightbox)
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        if (document.getElementById('pdf-lightbox').style.display === 'flex') {
-          closePdfLightbox();
-        } else if (document.getElementById('lightbox').style.display === 'flex') {
-          closeLightbox();
-        }
-      }
-      // Add arrow key navigation for regular lightbox
-      if (document.getElementById('lightbox').style.display === 'flex') {
-        if (event.key === 'ArrowLeft') {
-          prevImage();
-        } else if (event.key === 'ArrowRight') {
-          nextImage();
-        }
-      }
     });
   </script>
   <p style="color: white;">Oliver S.</p>
